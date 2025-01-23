@@ -12,7 +12,7 @@ public:
 
 	//Accessors
 	bool GetFileReadDone() { return !m_thread.joinable(); }
-	bool GetFileReadSuccess() { return !m_readSuccess; }
+	bool GetFileReadSuccess() { return m_readSuccess; }
 
 	//Methods
 	string GetCurDirectory();

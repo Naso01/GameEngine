@@ -2,6 +2,7 @@
 
 //Contructors/Destructors
 FileController::FileController() {
+
 	m_handle = nullptr;//pointer
 	m_readSuccess = false;
 	m_thread = {  };
