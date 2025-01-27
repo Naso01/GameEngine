@@ -17,6 +17,7 @@ string FileController::GetCurDirectory() {
 	return string(buff);
 }
 
+//Get File in bytes
 int FileController::GetFileSize(string _filePath) {
 
 	m_handle = nullptr;

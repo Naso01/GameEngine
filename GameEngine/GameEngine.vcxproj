@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="FileController.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Resource.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="StackAllocator.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Asset.h" />
     <ClInclude Include="FileController.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Resource.h" />
