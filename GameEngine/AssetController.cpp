@@ -15,15 +15,26 @@ void AssetController::Initialize(int _stackSize) {
 
 AssetController::~AssetController() {
 
+	Clear();
+}
+
+void AssetController::Clear() {
+
 	// Remove all asset objects from the object pool
 	for (auto const& x : m_assets) {
 
 		Asset::Pool->ReleaseResource(x.second);
 	}
-	delete Asset::Pool;
+	if (Asset::Pool != nullptr) {
+
+		delete Asset::Pool;
+		Asset::Pool = nullptr;
+
+	}
+	
 	Stack->ClearMemory();
-	delete Stack;
 	m_assets.clear();
+
 }
 
 Asset* AssetController::GetAsset(string _guid) {
