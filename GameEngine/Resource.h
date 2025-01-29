@@ -16,9 +16,11 @@ public:
 	virtual void Deserialize(istream& _stream);
 	void AssignNonDefaultValues();
 	void ToString();
+	
 
 	//Members
 	static ObjectPool<Resource>* Pool;
+
 
 protected:
 	void SerializePointer(ostream& _stream, Resource* _pointer);

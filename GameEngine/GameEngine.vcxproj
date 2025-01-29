@@ -128,6 +128,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Asset.cpp" />
+    <ClCompile Include="AssetController.cpp" />
     <ClCompile Include="FileController.cpp" />
     <ClCompile Include="GameEngine.cpp" />
     <ClCompile Include="Resource.cpp" />
@@ -136,6 +137,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Asset.h" />
+    <ClInclude Include="AssetController.h" />
     <ClInclude Include="FileController.h" />
     <ClInclude Include="ObjectPool.h" />
     <ClInclude Include="Resource.h" />

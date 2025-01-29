@@ -23,6 +23,7 @@ public:
     //Methods
     T* GetResource()
     {
+        //When Object Pool is empty
         if (m_available.empty())
         {
             std::cout << "Creating new pool object." << std::endl;

@@ -20,6 +20,8 @@ public:
 
 	//Methods
 	static ObjectPool <Asset>* Pool;
+	//edited
+	void Reset() { m_dataSize = 0; }
 
 private:
 	//Members
