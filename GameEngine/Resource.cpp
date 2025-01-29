@@ -39,7 +39,7 @@ void Resource::ToString() {
 		m_asset->ToString();
 	}
 }
-/*
+
 void Resource::SerializePointer(ostream& _stream, Resource* _pointer) {
 
 	byte exists = 1;
@@ -65,7 +65,7 @@ void Resource::DeserializePointer(istream& _stream, Resource*& _pointer) {
 		_pointer->Deserialize(_stream);
 	}
 }
-*/
+
 void Resource::SerializeAsset(std::ostream& _stream, Asset* _asset)
 {
 	byte guidLength = 0;
@@ -101,7 +101,8 @@ void Resource::Serialize(ostream& _stream) {
 	_stream.write(reinterpret_cast<char*>(&m_val1), sizeof(m_val1));
 	_stream.write(reinterpret_cast<char*>(&m_val2), sizeof(m_val2));
 	_stream.write(reinterpret_cast<char*>(&m_val3), sizeof(m_val3));
-
+	
+	SerializePointer(_stream, m_subResource);
 	SerializeAsset(_stream, m_asset);
 }
 
@@ -111,5 +112,6 @@ void Resource::Deserialize(istream& _stream) {
 	_stream.read(reinterpret_cast<char*>(&m_val2), sizeof(m_val2));
 	_stream.read(reinterpret_cast<char*>(&m_val3), sizeof(m_val3));
 
+	DeserializePointer(_stream, m_subResource);
 	DeserializeAsset(_stream, m_asset);
 }
