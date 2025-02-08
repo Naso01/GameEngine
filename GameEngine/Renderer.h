@@ -2,6 +2,10 @@
 #define RENDERER_H
 
 #include "StandardIncludes.h"
+#include "Texture.h"
+
+class Asset;
+
 
 struct Color {
 
@@ -59,8 +63,8 @@ public:
 
     // Accessors
     SDL_Window* GetWindow() { return m_window; }
-
     SDL_Renderer* GetRenderer() { return m_renderer; }
+    SDL_Texture* GetSDLTexture(Texture* _texture);
 
     // Methods
     void Initialize(int xResolution, int yResolution);
@@ -72,6 +76,7 @@ public:
     void RenderLine(Rect _points);
     void RenderRectangle(Rect _rect);
     void RenderFillRectangle(Rect _rect);
+    void RenderTexture(Texture* _texture, Point _point);
 
     void Shutdown();
 
@@ -80,6 +85,8 @@ private:             // Members
     SDL_Window* m_window;
     SDL_Renderer* m_renderer;
     SDL_Rect m_destRect;
+    SDL_Surface* m_surface;
+    map<string, SDL_Texture*> m_textures;
 
 
 };
