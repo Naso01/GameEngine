@@ -68,15 +68,21 @@ public:
 
     // Methods
     void Initialize(int xResolution, int yResolution);
+    Point GetWindowSize();//returns view size (Wrapper function)
 
     void SetDrawColor(Color _color);
     void ClearScreen();
+    void SetViewport(Rect _viewport);
 
     void RenderPoint(Point _position);
     void RenderLine(Rect _points);
     void RenderRectangle(Rect _rect);
     void RenderFillRectangle(Rect _rect);
+
+    //Renders at full size and from a point
     void RenderTexture(Texture* _texture, Point _point);
+    //Renders at the size of the rectangle
+    void RenderTexture(Texture* _texture, Rect _rect);
 
     void Shutdown();
 
@@ -86,6 +92,7 @@ private:             // Members
     SDL_Renderer* m_renderer;
     SDL_Rect m_destRect;
     SDL_Surface* m_surface;
+    SDL_Rect m_viewPort; 
     map<string, SDL_Texture*> m_textures;
 
 
