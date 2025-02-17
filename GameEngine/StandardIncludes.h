@@ -13,9 +13,13 @@
 #include <thread>
 #include <map>
 #include <SDL.h>
+#include <SDL_ttf.h>
+#include <SDL_pixels.h>
 
 //Project headers
 #include "Singleton.h"
+#include "BasicStructs.h"
+
 
 //OS specific includes and defines
 #ifdef _WIN32
