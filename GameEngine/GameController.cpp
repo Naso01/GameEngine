@@ -21,7 +21,7 @@ void GameController::RunGame() {
 	font->Initialize(20);
 
 	Point ws = r->GetWindowSize();
-	
+
 	SpriteSheet::Pool = new ObjectPool<SpriteSheet>();
 	SpriteAnim::Pool = new ObjectPool<SpriteAnim>();
 	SpriteSheet* sheet = SpriteSheet::Pool->GetResource();
@@ -38,7 +38,12 @@ void GameController::RunGame() {
 		r->ClearScreen();
 		r->RenderTexture(sheet, sheet->Update(EN_AN_IDLE), Rect(0, 0, 69 * 3, 44 * 3));
 		r->RenderTexture(sheet, sheet->Update(EN_AN_RUN), Rect(0, 150, 69 * 3, 150 + 44 * 3));
-		font->Write(r->GetRenderer(), "testing 123!!", SDL_Color{0, 255, 0}, SDL_Point{ 150,  50 });
+		
+		string s = "Fram number: " + to_string(sheet->GetCurrentClip(EN_AN_IDLE));
+		font->Write(r->GetRenderer(), s.c_str(), SDL_Color{0, 255, 0}, SDL_Point{150,  50});
+
+		s = "Frame number: " + to_string(sheet->GetCurrentClip(EN_AN_RUN));
+		font->Write(r->GetRenderer(),s.c_str(), SDL_Color{0, 255, 0}, SDL_Point{250,  200});
 
 		SDL_RenderPresent(r->GetRenderer());
 	}

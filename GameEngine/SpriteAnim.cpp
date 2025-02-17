@@ -16,7 +16,7 @@ void SpriteAnim::Create(short _clipStart, short _clipCount, float _clipSpeed) {
 	m_clipCount = _clipCount;
 	m_clipSpeed = _clipSpeed;
 	m_clipCurrent = _clipStart;
-	m_clipEnd = m_clipStart * m_clipCount;
+	m_clipEnd = m_clipStart + m_clipCount; 
 }
 
 void SpriteAnim::ClearMemory() {
