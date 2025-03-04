@@ -10,14 +10,19 @@ public:
 	Timing();
 	virtual ~Timing(){ }
 
+
 	// Accessors
 	unsigned int GetFPS() { return m_fpsLast; }
 	float GetDeltaTime() { return m_deltaTime; }
 
+
 	// Methods
 	void Tick();
+	void SetFPS(int _fps);
+	void CapFPS();
 
-private: // Members
+private: 
+	// Members
 	unsigned int m_currentTime;
 	unsigned int m_lastTime;
 
@@ -26,6 +31,9 @@ private: // Members
 	unsigned int m_fpsLast;
 
 	float m_deltaTime;
+
+	unsigned int m_targetFPS;
+	unsigned int m_ticksPerFrame;
 };
 
 #endif // !TIMING_H

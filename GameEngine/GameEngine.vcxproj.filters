@@ -72,26 +72,26 @@
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\Core\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="FileController.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Resource.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="Serializable.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
-    <ClCompile Include="StackAllocator.cpp">
-      <Filter>Source Files\Core</Filter>
-    </ClCompile>
     <ClCompile Include="SpriteSheet.cpp">
       <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="TTFont.cpp">
       <Filter>Source Files\Core\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="StackAllocator.cpp">
+      <Filter>Source Files\Core\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Serializable.cpp">
+      <Filter>Source Files\Core\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="FileController.cpp">
+      <Filter>Source Files\Core\Framework</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Source Files\Core\Framework</Filter>
+    </ClCompile>
     <ClCompile Include="Timing.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Source Files\Core\Framework</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -137,26 +137,26 @@
     <ClInclude Include="Unit.h">
       <Filter>Header Files\Core\Gameplay</Filter>
     </ClInclude>
-    <ClInclude Include="BasicStructs.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="FileController.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="Singleton.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="StandardIncludes.h">
-      <Filter>Header Files\Core</Filter>
-    </ClInclude>
     <ClInclude Include="SpriteSheet.h">
       <Filter>Header Files\Core\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="TTFont.h">
       <Filter>Header Files\Core\Graphics</Filter>
     </ClInclude>
+    <ClInclude Include="StandardIncludes.h">
+      <Filter>Header Files\Core\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Singleton.h">
+      <Filter>Header Files\Core\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="FileController.h">
+      <Filter>Header Files\Core\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="BasicStructs.h">
+      <Filter>Header Files\Core\Framework</Filter>
+    </ClInclude>
     <ClInclude Include="Timing.h">
-      <Filter>Header Files\Core</Filter>
+      <Filter>Header Files\Core\Framework</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
