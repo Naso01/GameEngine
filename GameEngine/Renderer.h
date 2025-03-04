@@ -37,7 +37,10 @@ public:
     void RenderTexture(Texture* _texture, Rect _rect);
     //grabs a fraction of the texture to be rendered only
     void RenderTexture(Texture* _texture, Rect _srcRect, Rect _destRect);
-    
+    //Renders Texture with possible rotation angle
+    void RenderTexture(SDL_Texture* _texture, Rect _srcRect, Rect _desRect, double _angle);
+
+
     void Shutdown();
 
 private:             

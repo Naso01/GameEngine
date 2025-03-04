@@ -93,6 +93,9 @@
     <ClCompile Include="Timing.cpp">
       <Filter>Source Files\Core\Framework</Filter>
     </ClCompile>
+    <ClCompile Include="RenderTarget.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -157,6 +160,9 @@
     </ClInclude>
     <ClInclude Include="Timing.h">
       <Filter>Header Files\Core\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderTarget.h">
+      <Filter>Header Files\Core\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

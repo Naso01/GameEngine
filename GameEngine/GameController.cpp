@@ -1,5 +1,6 @@
 #include "GameController.h"
 #include "Renderer.h"
+#include "RenderTarget.h"
 #include "SpriteSheet.h"
 #include "TTFont.h"
 #include "Timing.h"
@@ -22,8 +23,6 @@ void GameController::RunGame() {
 	TTFont* font = new TTFont();
 	font->Initialize(20);
 
-	Point ws = r->GetWindowSize();
-
 	SpriteSheet::Pool = new ObjectPool<SpriteSheet>();
 	SpriteAnim::Pool = new ObjectPool<SpriteAnim>();
 	SpriteSheet* sheet = SpriteSheet::Pool->GetResource();
@@ -32,12 +31,14 @@ void GameController::RunGame() {
 	sheet->AddAnimation(EN_AN_IDLE, 0, 6, 6.0f);
 	sheet->AddAnimation(EN_AN_RUN, 6, 8, 6.0f);
 
-	//sheet->SetBlendMode(SDL_BLENDMODE_BLEND); //Not needed in this case
-	sheet->SetBlendAlpha(128);
+	Point ws = r->GetWindowSize();
+	RenderTarget* rt = new RenderTarget();
+	rt->Create(ws.X, ws.Y);
 
 	while (m_sdlEvent.type != SDL_QUIT) {
 
 		t->Tick();
+		rt->Start();//Render Target -> Texture Buffer
 
 		SDL_PollEvent(&m_sdlEvent);
 		r->SetDrawColor(Color(255, 255, 255, 255));
@@ -54,11 +55,17 @@ void GameController::RunGame() {
 		string fps = "Frames per Second: " + to_string(t->GetFPS());
 		font->Write(r->GetRenderer(),fps.c_str(), SDL_Color{0, 0, 255}, SDL_Point{0, 0});
 
-		SDL_RenderPresent(r->GetRenderer());
+		rt->Stop(); //Render Target -> Back Buffer
+		r->SetDrawColor(Color(0, 0, 0, 255));
+		r->ClearScreen();
+		rt->Render(t->GetDeltaTime());
+
+		SDL_RenderPresent(r->GetRenderer()); // Display all Textures from Back Buffer to Front Buffer
 
 		t->CapFPS();
 	}
 
+	delete rt;
 	delete SpriteAnim::Pool;
 	delete SpriteSheet::Pool;
 
