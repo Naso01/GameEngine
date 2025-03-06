@@ -20,7 +20,7 @@ void GameController::RunGame() {
 	Timing* t = &Timing::Instance();
 	r->Initialize();
 	r->EnumerateDisplayModes();
-
+	//r->ChangeDisplay
 	TTFont* font = new TTFont();
 	font->Initialize(20);
 
@@ -37,6 +37,7 @@ void GameController::RunGame() {
 		font->Write(r->GetRenderer(),fps.c_str(), SDL_Color{0, 0, 255}, SDL_Point{0, 0});
 
 		vector<SDL_DisplayMode> modes = r->GetResolutions();
+		
 		for (int count = 0; count < modes.size(); count++) {
 
 			stringstream s;

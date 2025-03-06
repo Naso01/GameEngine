@@ -31,7 +31,7 @@ void Renderer::Initialize()
 
 //Need to add a way to only get the primary display
 void Renderer::EnumerateDisplayModes() {
-
+    /*
     int display_count = SDL_GetNumVideoDisplays();
     for (int display_index = 0; display_index <= display_count; display_index++) {
 
@@ -45,6 +45,18 @@ void Renderer::EnumerateDisplayModes() {
             }
         }
     }
+    */
+
+    int modes_count = SDL_GetNumDisplayModes(1);
+    for (int mode_index = 0; mode_index <= modes_count; mode_index++) {
+
+        SDL_DisplayMode mode = { SDL_PIXELFORMAT_UNKNOWN, 0, 0, 0, 0 };
+        if (SDL_GetDisplayMode(0, mode_index, &mode) == 0) {
+
+            m_resolutions.push_back(mode);
+        }
+    }
+
 }
 
 void Renderer::SetDrawColor(Color _color)
