@@ -29,6 +29,11 @@ void Renderer::Initialize()
     M_ASSERT(m_renderer != nullptr, "Failed to initialize SDL renderer.");
 }
 
+void Renderer::ChangeDisplayMode(SDL_DisplayMode* _mode) {
+    M_ASSERT(SDL_SetWindowDisplayMode(m_window, _mode) == 0, "Failed to set resolution");
+    SDL_SetWindowSize(m_window, _mode->w, _mode->h);
+}
+
 //Need to add a way to only get the primary display
 void Renderer::EnumerateDisplayModes() {
     /*
