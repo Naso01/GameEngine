@@ -2,6 +2,8 @@
 #define STANDARD_INCLUDES_H
 
 #define SDL_MAIN_HANDLED
+#define NATIVE_XRES 2560
+#define NATIVE_YRES 1440
 
 //Include standard headers
 #include <string>
