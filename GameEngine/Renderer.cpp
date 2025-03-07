@@ -29,7 +29,19 @@ void Renderer::Initialize()
     M_ASSERT(m_renderer != nullptr, "Failed to initialize SDL renderer.");
 }
 
+SDL_DisplayMode* Renderer::GetResolution(int _modeWidth, int _modeHeight) {
+    
+    for (int count = 0; count < m_resolutions.size(); count++) {
+        if (m_resolutions[count].w == _modeWidth && m_resolutions[count].h == _modeHeight) {
+           
+            return &m_resolutions[count];
+        }
+    }
+    M_ASSERT(true, "Failed to find resolution");
+}
+
 void Renderer::ChangeDisplayMode(SDL_DisplayMode* _mode) {
+
     M_ASSERT(SDL_SetWindowDisplayMode(m_window, _mode) == 0, "Failed to set resolution");
     SDL_SetWindowSize(m_window, _mode->w, _mode->h);
 }

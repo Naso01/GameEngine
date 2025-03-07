@@ -18,6 +18,7 @@ public:
     SDL_Renderer* GetRenderer() { return m_renderer; }
     SDL_Texture* GetSDLTexture(Texture* _texture);
     vector<SDL_DisplayMode>& GetResolutions() { return m_resolutions; }
+    SDL_DisplayMode* GetResolution(int _modeWidth, int _modeHeight);
 
     // Methods
     void Initialize();
