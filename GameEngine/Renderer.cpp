@@ -50,15 +50,15 @@ void Renderer::ChangeDisplayMode(SDL_DisplayMode* _mode) {
 void Renderer::EnumerateDisplayModes() {
     
     int display_count = SDL_GetNumVideoDisplays();
-    for (int display_index = 0; display_index <= display_count; display_index++) {
-
+    for (int display_index = 0; display_index < display_count; display_index++) {
+        
         Renderer::PopulateDisplayModes(display_index);
     }
 }
 //get a single Monitor's display modes
 void Renderer::PopulateDisplayModes(int _displayIndex) {
 
-    M_ASSERT(_displayIndex <= SDL_GetNumVideoDisplays(), "Display index out of bounds");
+    M_ASSERT(_displayIndex < SDL_GetNumVideoDisplays(), "Display index out of bounds");
 
     int modes_count = SDL_GetNumDisplayModes(_displayIndex);
     for (int mode_index = 0; mode_index <= modes_count; mode_index++) {
