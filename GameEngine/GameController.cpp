@@ -20,8 +20,8 @@ void GameController::RunGame() {
 	Renderer* r = &Renderer::Instance();
 	Timing* t = &Timing::Instance();
 	r->Initialize();
-	//r->EnumerateDisplayModes();
-	r->PopulateDisplayModes(0);
+	r->EnumerateDisplayModes();
+	//r->PopulateDisplayModes(0); //get a single Monitor's display modes
 	//r->ChangeDisplayMode((r->GetResolution(800, 600))); // 800x600
 	
 	TTFont* font = new TTFont();
