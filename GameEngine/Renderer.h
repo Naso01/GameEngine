@@ -24,6 +24,7 @@ public:
     void Initialize();
     void ChangeDisplayMode(SDL_DisplayMode* _mode);
     void EnumerateDisplayModes();
+    void PopulateDisplayModes(int _displayIndex);
     Point GetWindowSize();//returns view size (Wrapper function)
 
     void SetDrawColor(Color _color);

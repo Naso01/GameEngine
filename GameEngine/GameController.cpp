@@ -20,8 +20,9 @@ void GameController::RunGame() {
 	Renderer* r = &Renderer::Instance();
 	Timing* t = &Timing::Instance();
 	r->Initialize();
-	r->EnumerateDisplayModes();
-	r->ChangeDisplayMode((r->GetResolution(800, 600))); // 800x600
+	//r->EnumerateDisplayModes();
+	r->PopulateDisplayModes(0);
+	//r->ChangeDisplayMode((r->GetResolution(800, 600))); // 800x600
 	
 	TTFont* font = new TTFont();
 	font->Initialize(20);
@@ -41,7 +42,7 @@ void GameController::RunGame() {
 
 		t->Tick();
 		rt->Start();
-		//SDL_PollEvent(&m_sdlEvent);
+		SDL_PollEvent(&m_sdlEvent);
 
 		r->SetDrawColor(Color(255, 255, 255, 255));
 		r->ClearScreen();

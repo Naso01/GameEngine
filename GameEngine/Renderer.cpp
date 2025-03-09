@@ -37,7 +37,7 @@ SDL_DisplayMode* Renderer::GetResolution(int _modeWidth, int _modeHeight) {
             return &m_resolutions[count];
         }
     }
-    M_ASSERT(true, "Failed to find resolution");
+    M_ASSERT(false, "Failed to get resolution");
 }
 
 void Renderer::ChangeDisplayMode(SDL_DisplayMode* _mode) {
@@ -46,34 +46,29 @@ void Renderer::ChangeDisplayMode(SDL_DisplayMode* _mode) {
     SDL_SetWindowSize(m_window, _mode->w, _mode->h);
 }
 
-//Need to add a way to only get the primary display
+//get display modes for each display
 void Renderer::EnumerateDisplayModes() {
-    /*
+    
     int display_count = SDL_GetNumVideoDisplays();
     for (int display_index = 0; display_index <= display_count; display_index++) {
 
-        int modes_count = SDL_GetNumDisplayModes(display_index);
-        for (int mode_index = 0; mode_index <= modes_count; mode_index++) {
-
-            SDL_DisplayMode mode = { SDL_PIXELFORMAT_UNKNOWN, 0, 0, 0, 0 };
-            if (SDL_GetDisplayMode(display_index, mode_index, &mode) == 0) {
-
-                m_resolutions.push_back(mode);
-            }
-        }
+        Renderer::PopulateDisplayModes(display_index);
     }
-    */
+}
+//specify which display you'd like to save modes
+void Renderer::PopulateDisplayModes(int _displayIndex) {
 
-    int modes_count = SDL_GetNumDisplayModes(1);
+    M_ASSERT(_displayIndex <= SDL_GetNumVideoDisplays(), "Display index out of bounds");
+
+    int modes_count = SDL_GetNumDisplayModes(_displayIndex);
     for (int mode_index = 0; mode_index <= modes_count; mode_index++) {
 
         SDL_DisplayMode mode = { SDL_PIXELFORMAT_UNKNOWN, 0, 0, 0, 0 };
-        if (SDL_GetDisplayMode(0, mode_index, &mode) == 0) {
+        if (SDL_GetDisplayMode(_displayIndex, mode_index, &mode) == 0) {
 
             m_resolutions.push_back(mode);
         }
     }
-
 }
 
 void Renderer::SetDrawColor(Color _color)
