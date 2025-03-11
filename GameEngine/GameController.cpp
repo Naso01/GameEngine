@@ -25,6 +25,7 @@ GameController::~GameController() {
 	ShutDown();
 }
 
+
 void GameController::Initialize() {
 
 	m_renderer = &Renderer::Instance();
