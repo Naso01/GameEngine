@@ -16,6 +16,27 @@ Renderer::~Renderer() {
 
 }
 
+void Renderer::Shutdown()
+{
+    for (auto it = m_textures.begin(); it != m_textures.end(); it++) {
+
+        SDL_DestroyTexture(it->second);
+    }
+    m_textures.clear();
+    if (m_renderer != nullptr)
+    {
+        SDL_DestroyRenderer(m_renderer);
+        m_renderer = nullptr;
+    }
+    if (m_window != nullptr)
+    {
+        SDL_DestroyWindow(m_window);
+        m_window = nullptr;
+    }
+    SDL_Quit(); //Quit SDL subsystems
+}
+
+
 void Renderer::Initialize()
 {   
     //SDL_INIT_VIDEO Instead of SDL_INIT_EVERYTHING
@@ -81,25 +102,6 @@ void Renderer::ClearScreen()
     SDL_RenderClear(m_renderer);
 }
 
-
-void Renderer::Shutdown()
-{   
-    for (auto it = m_textures.begin(); it != m_textures.end(); it++) {
-
-        SDL_DestroyTexture(it->second);
-    }
-    m_textures.clear();
-
-    if (m_renderer != nullptr)
-    {
-        SDL_DestroyRenderer(m_renderer);
-    }
-    if (m_window != nullptr)
-    {
-        SDL_DestroyWindow(m_window);
-    }
-    SDL_Quit(); //Quit SDL subsystems
-}
 
 void Renderer::RenderPoint(Point _position)
 {

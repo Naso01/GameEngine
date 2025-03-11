@@ -1,71 +1,77 @@
 #include "GameController.h"
+
 #include "Renderer.h"
-#include "RenderTarget.h"
-#include "SpriteSheet.h"
 #include "TTFont.h"
-#include "Timing.h"
-#include <sstream>
+
+#include "InputController.h"
+#include "Keyboard.h"
+
 
 GameController::GameController() {
-
+	
+	
 	m_sdlEvent = {};
+	m_renderer = nullptr;
+	m_fArial20 = nullptr;
+	m_quit = false;
+	m_input = nullptr;
+	m_text = "";
 }
 
-GameController::~GameController() { }
+GameController::~GameController() {
+
+	ShutDown();
+}
+
+void GameController::Initialize() {
+
+	m_renderer = &Renderer::Instance();
+	m_renderer->Initialize();
+	m_fArial20 = new TTFont();
+	m_fArial20->Initialize(20);
+	m_input = &InputController::Instance();
+}
+
+void GameController::ShutDown() {
+
+	delete m_fArial20;
+}
+
+void GameController::HandleInput(SDL_Event _event) {
+
+	string temp;
+	if (_event.type == SDL_QUIT ||
+		(m_input->KB()->KeyUp(_event, SDLK_ESCAPE))) {
+
+		m_quit = true;
+	}
+	else if ((temp = m_input->KB()->TextInput(_event)) != "") {
+
+		m_text += temp;
+	}
+	else if (m_input->KB()->KeyUp(m_sdlEvent, SDLK_RETURN)) {
+
+		m_text = "";
+	}
+}
 
 
 void GameController::RunGame() {
 
-	AssetController::Instance().Initialize(10000000); //Allocate 10MB
-	Renderer* r = &Renderer::Instance();
-	Timing* t = &Timing::Instance();
-	r->Initialize();
-	//r->EnumerateDisplayModes();
-	r->PopulateDisplayModes(0); //get a single Monitor's display modes
-	r->ChangeDisplayMode((r->GetResolution(800, 600))); // 800x600
-	
-	TTFont* font = new TTFont();
-	font->Initialize(20);
+	Initialize();
 
-	SpriteSheet::Pool = new ObjectPool<SpriteSheet>();
-	SpriteAnim::Pool = new ObjectPool<SpriteAnim>();
-	SpriteSheet* sheet = SpriteSheet::Pool->GetResource();
-	sheet->Load("../Assets/Textures/Warrior.tga");
-	sheet->SetSize(17, 6, 69, 44);
-	sheet->AddAnimation(EN_AN_IDLE, 0, 6, 6.0f);
-	sheet->AddAnimation(EN_AN_RUN, 6, 8, 6.0f);
+	while (!m_quit) {
 
-	RenderTarget* rt = new RenderTarget();
-	rt->Create(NATIVE_XRES, NATIVE_YRES); // Set to game's native resolution
+		m_renderer->SetDrawColor(Color(255, 255, 255, 255));
+		m_renderer->ClearScreen();
 
-	while (m_sdlEvent.type != SDL_QUIT) {
+		//Checks for Events in one frame
+		while (SDL_PollEvent(&m_sdlEvent) != 0) {
 
-		t->Tick();
-		rt->Start();
-		SDL_PollEvent(&m_sdlEvent);
+			HandleInput(m_sdlEvent);
+		}
 
-		r->SetDrawColor(Color(255, 255, 255, 255));
-		r->ClearScreen();
-		r->RenderTexture(sheet, sheet->Update(EN_AN_RUN, t->GetDeltaTime()), Rect(0, 150, 69 * 3, 150 + 44 * 3));
- 
-		string fps = "Frames per Second: " + to_string(t->GetFPS());
-		font->Write(r->GetRenderer(), fps.c_str(), SDL_Color{0, 0, 255}, SDL_Point{0, 0});
-		string s = "Frame number: " + to_string(sheet->GetCurrentClip(EN_AN_RUN));
-		font->Write(r->GetRenderer(), s.c_str(), SDL_Color{ 0, 255, 0 }, SDL_Point{ 250, 200 });
-		
-		
-		rt->Stop();
-		r->SetDrawColor(Color(0, 0, 0, 255));
-		r->ClearScreen();
-		rt->Render(t->GetDeltaTime()); // Scale native resolution to screen resolution
-		SDL_RenderPresent(r->GetRenderer()); // Display all Textures from Back Buffer to Front Buffer
-		t->CapFPS();
+		m_fArial20->Write(m_renderer->GetRenderer(), m_text.c_str(), SDL_Color{ 0, 255, 0 }, SDL_Point{ 250, 200 });
+		SDL_RenderPresent(m_renderer->GetRenderer());
 	}
-
-	delete rt;
-	delete SpriteAnim::Pool;
-	delete SpriteSheet::Pool;
-
-	font->Shutdown();
-	r->Shutdown();
 }
