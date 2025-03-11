@@ -8,7 +8,7 @@ typedef unsigned char byte;
 #endif
 
 struct Color {
-
+    
     Color(byte _r, byte _g, byte _b, byte _a) {
 
         R = _r;
@@ -25,11 +25,18 @@ struct Color {
 
 struct Point
 {
+    /*
+    Point() {
+        X = 0;
+        Y = 0;
+    }*/
+
     Point(unsigned int _x, unsigned int _y)
     {
         X = _x;
         Y = _y;
     }
+
 
     unsigned int X;
     unsigned int Y;
