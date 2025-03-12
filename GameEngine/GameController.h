@@ -32,6 +32,7 @@ private:
 	string m_smPos;
 	Point m_mPos;
 
+	string m_ctInfo;
 };
 
 #endif //GAMECONTROLLER_H

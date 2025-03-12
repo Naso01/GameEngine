@@ -37,6 +37,12 @@
     <Filter Include="Source Files\Core\Gameplay">
       <UniqueIdentifier>{0aed6b4f-06ec-493b-bba5-8dc2b89de75d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Core\Input">
+      <UniqueIdentifier>{4c7d950d-9c1b-409b-a850-4125fe5bb0e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Core\Input">
+      <UniqueIdentifier>{ad90f48a-8a3d-4802-bf04-0f409cbb4493}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -95,6 +101,18 @@
     </ClCompile>
     <ClCompile Include="RenderTarget.cpp">
       <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="InputController.cpp">
+      <Filter>Source Files\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Keyboard.cpp">
+      <Filter>Source Files\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Mouse.cpp">
+      <Filter>Source Files\Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="Controller.cpp">
+      <Filter>Source Files\Core\Input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +181,18 @@
     </ClInclude>
     <ClInclude Include="RenderTarget.h">
       <Filter>Header Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="InputController.h">
+      <Filter>Header Files\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Keyboard.h">
+      <Filter>Header Files\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Mouse.h">
+      <Filter>Header Files\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="Controller.h">
+      <Filter>Header Files\Core\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
