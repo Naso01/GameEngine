@@ -101,6 +101,37 @@ bool Controller::ProcessButtons(SDL_Event _event) {
 	return false;
 }
 
+bool Controller::ProcessMotion(SDL_Event _event) {
+
+	if (_event.type != SDL_CONTROLLERAXISMOTION) return false;
+
+	for (unsigned int count = 0; count < m_controllers.size(); count++) {
+
+		if (m_controllers[count].ID != _event.cdevice.which) continue;
+
+		// Left Analog Stick
+		if (_event.caxis.axis == 0) { // X axis motion
+
+			m_controllers[count].LeftAxis.X = _event.caxis.value;
+		}
+		else if (_event.caxis.axis == 1) { // Y axis motion
+
+			m_controllers[count].LeftAxis.Y = _event.caxis.value;
+		}
+
+		//Right Analog Stick
+		if (_event.caxis.axis == 2) { // X axis motion
+
+			m_controllers[count].RightAxis.X = _event.caxis.value;
+		}
+		else if (_event.caxis.axis == 3) { // Y axis motion
+
+			m_controllers[count].RightAxis.Y = _event.caxis.value;
+		}
+	}
+	return true;
+}
+
 
 string Controller::ToString(){
 
