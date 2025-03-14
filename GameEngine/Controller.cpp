@@ -5,12 +5,14 @@ Controller::Controller() { }
 Controller::~Controller(){ }
 
 void Controller::DetectControllers() {
-	
+
+	SDL_Init(SDL_INIT_GAMECONTROLLER); // Initializes Subsystem
+
 	m_controllers.clear();
 	int numControllers = SDL_NumJoysticks();
 	if (numControllers == 0) return;
 
-	SDL_Init(SDL_INIT_GAMECONTROLLER); // Initializes Subsystem
+	
 
 	for (int count = 0; count < numControllers; count++) {
 
@@ -24,7 +26,6 @@ bool Controller::Added(SDL_Event _event)
 {
 	
 	if (_event.type != SDL_CONTROLLERDEVICEADDED) return false;
-	cout << "adding" << endl;
 	if (SDL_IsGameController(_event.cdevice.which)) {
 
 		SDL_GameController* controller = SDL_GameControllerOpen(_event.cdevice.which);
