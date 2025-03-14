@@ -1,6 +1,6 @@
 #include "Controller.h"
 
-Controller::Controller() { SDL_Init(SDL_INIT_GAMECONTROLLER); }
+Controller::Controller() { }
 
 Controller::~Controller(){ }
 
@@ -9,7 +9,9 @@ void Controller::DetectControllers() {
 	m_controllers.clear();
 	int numControllers = SDL_NumJoysticks();
 	if (numControllers == 0) return;
-	
+
+	SDL_Init(SDL_INIT_GAMECONTROLLER); // Initializes Subsystem
+
 	for (int count = 0; count < numControllers; count++) {
 
 		if (!SDL_IsGameController(count)) continue;
