@@ -9,22 +9,22 @@ SoundEffect::SoundEffect() {
 
 SoundEffect::~SoundEffect(){ }
 
-void SoundEffect::AssignNonDefaultValues() {
+void SoundEffect::Load(string _guid) {
 
-	m_effect = AssetController::Instance().GetAsset("SoundEffect.wav");
+	m_effect = AssetController::Instance().GetAsset(_guid);
 	Resource::AssignNonDefaultValues();
 }
 
 void SoundEffect::Serialize(ostream& _stream) {
 
 	SerializeAsset(_stream, m_effect);
-	Resource::Serialize(_stream);
+
 }
 
 void SoundEffect::Deserialize(istream& _stream) {
 
 	DeserializeAsset(_stream, m_effect);
-	Resource::Deserialize(_stream);
+	
 }
 
 void SoundEffect::ToString() {
