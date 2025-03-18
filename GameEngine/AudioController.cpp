@@ -31,7 +31,7 @@ Song* AudioController::LoadSong(string _guid) {
 //Sound Effects
 void AudioController::Play(SoundEffect* _effect) {
 
-	M_ASSERT(Mix_PlayChannel(-1, GetSDLSFX(_effect), 0), "Failed to play SFX");
+	M_ASSERT(Mix_PlayChannel(-1, GetSDLSFX(_effect), 0) != -1, "Failed to play SFX");
 	m_currentEffect = _effect->GetData()->GetGUID();
 	Mix_ChannelFinished(AudioController::CatchChannelDone);
 }
