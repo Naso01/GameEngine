@@ -43,6 +43,12 @@
     <Filter Include="Source Files\Core\Input">
       <UniqueIdentifier>{ad90f48a-8a3d-4802-bf04-0f409cbb4493}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Audio">
+      <UniqueIdentifier>{0330420b-c75f-4b52-9880-753f9534ab36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Audio">
+      <UniqueIdentifier>{589220e3-bb7f-43cf-9d21-b45a02169dd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -58,9 +64,6 @@
       <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="Level.cpp">
-      <Filter>Source Files\Core\Gameplay</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundEffect.cpp">
       <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="SpriteAnim.cpp">
@@ -114,6 +117,15 @@
     <ClCompile Include="Controller.cpp">
       <Filter>Source Files\Core\Input</Filter>
     </ClCompile>
+    <ClCompile Include="AudioController.cpp">
+      <Filter>Source Files\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Song.cpp">
+      <Filter>Source Files\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundEffect.cpp">
+      <Filter>Source Files\Core\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -148,9 +160,6 @@
     </ClInclude>
     <ClInclude Include="Serializable.h">
       <Filter>Header Files\Core\Framework</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundEffect.h">
-      <Filter>Header Files\Core\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="SpriteAnim.h">
       <Filter>Header Files\Core\Gameplay</Filter>
@@ -193,6 +202,15 @@
     </ClInclude>
     <ClInclude Include="Controller.h">
       <Filter>Header Files\Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundEffect.h">
+      <Filter>Header Files\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="AudioController.h">
+      <Filter>Header Files\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Song.h">
+      <Filter>Header Files\Core\Audio</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
