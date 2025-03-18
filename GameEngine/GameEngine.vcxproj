@@ -115,7 +115,7 @@
     <PreBuildEvent>
       <Command>copy /Y "$(SolutionDir)External\SDL2-2.26.1\lib\x64\SDL2.dll" "$(TargetDir)"
 copy /Y "$(SolutionDir)External\SDL2_ttf-2.20.1\lib\x64\SDL2_ttf.dll" "$(TargetDir)"
-copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.2\lib\x64\SDL2_ttf.dll" "$(TargetDir)"</Command>
+copy /Y "$(SolutionDir)External\SDL2_mixer-2.6.2\lib\x64\SDL2_mixer.dll" "$(TargetDir)"</Command>
     </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">

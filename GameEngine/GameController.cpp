@@ -24,6 +24,7 @@ GameController::GameController() {
 	m_audio = nullptr;
 	m_effect = nullptr;
 	m_song = nullptr;
+	
 }
 
 GameController::~GameController() {
@@ -42,8 +43,8 @@ void GameController::Initialize() {
 	m_input = &InputController::Instance();
 
 	m_audio = &AudioController::Instance();
-	m_effect = m_audio->LoadEffect("..Assets/Audio/Effects/Whoosh.wav");
-	m_song = m_audio->LoadSong("..Assets/Audio/Music/Track1.mp3");
+	m_effect = m_audio->LoadEffect("../Assets/Audio/Effects/Whoosh.wav");
+	m_song = m_audio->LoadSong("../Assets/Audio/Music/Track1.mp3");
 }
 
 void GameController::ShutDown() {
@@ -52,7 +53,7 @@ void GameController::ShutDown() {
 }
 
 void GameController::HandleInput(SDL_Event _event) {
-
+	
 	string temp;
 	if (_event.type == SDL_QUIT ||
 		(m_input->KB()->KeyUp(_event, SDLK_ESCAPE))) {
@@ -92,7 +93,7 @@ void GameController::RunGame() {
 
 		m_renderer->SetDrawColor(Color(255, 255, 255, 255));
 		m_renderer->ClearScreen();
-
+		
 		//Checks for Events in one frame
 		while (SDL_PollEvent(&m_sdlEvent) != 0) {
 			
