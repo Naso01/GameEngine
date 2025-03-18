@@ -57,7 +57,7 @@ private:
     SDL_Rect m_destRect;
 
     SDL_Surface* m_surface;
-    SDL_Rect m_viewPort; 
+    SDL_Rect m_viewPort;
     map<string, SDL_Texture*> m_textures;
     vector<SDL_DisplayMode> m_resolutions;
 
