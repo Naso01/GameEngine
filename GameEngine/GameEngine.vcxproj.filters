@@ -126,6 +126,9 @@
     <ClCompile Include="SoundEffect.cpp">
       <Filter>Source Files\Core\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="WavDraw.cpp">
+      <Filter>Source Files\Core\Audio</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -210,6 +213,9 @@
       <Filter>Header Files\Core\Audio</Filter>
     </ClInclude>
     <ClInclude Include="Song.h">
+      <Filter>Header Files\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="WavDraw.h">
       <Filter>Header Files\Core\Audio</Filter>
     </ClInclude>
   </ItemGroup>

@@ -13,6 +13,7 @@ class InputController;
 class AudioController;
 class SoundEffect;
 class Song;
+class WavDraw;
 
 class GameController : public Singleton<GameController>
 {
@@ -37,9 +38,10 @@ private:
 	InputController* m_input;
 	
 	AudioController* m_audio;
+	WavDraw* m_wavDraw;
 	vector<SoundEffect*> m_effects;
-	//SoundEffect* m_effects[MaxEffectChannels];
-	Song* m_song;
+
+	float m_zoomY;
 };
 
 #endif //GAMECONTROLLER_H
