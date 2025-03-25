@@ -62,11 +62,26 @@ static void DotProduct()
 	bVec = glm::normalize(bVec);
 
 	float dot = glm::dot(aVec, bVec);
-	std::cout << "Dot = " << dot << std::endl;
+	cout << "Dot = " << dot << endl;
+}
+
+static void CrossProduct()
+{
+	vec3 source = { 0, 0, 0 };
+	vec3 a = { 0, 2, 0 };
+	vec3 b = { 1, 1, 0 };
+
+	vec3 aVec = a - source;
+	vec3 bVec = b - source;
+
+	vec3 cross = glm::cross(aVec, bVec);
+	cross = glm::normalize(cross);
+
+	cout << "Cross = " << glm::to_string(cross) << endl;
 }
 
 int main(void)
 {
-	DotProduct();
+	CrossProduct();
 	return 0;
 }
