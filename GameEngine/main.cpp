@@ -30,11 +30,20 @@ static void SubtractionVectors() {
 
 }
 
+static void MultiplyVectors() {
+
+	vec3 pos = { 0, 0, 0 };
+	vec3 dest = { 1, 0, 0 };
+	vec3 dir = dest - pos;
+	dir = normalize(dir);
+	pos += (dir * 0.1f);
+	cout << glm::to_string(pos) << endl;
+}
 
 
 int main(void)
 {
-	SubtractionVectors();
+	MultiplyVectors();
 
 	return 0;
 }
