@@ -57,13 +57,9 @@ static int stepCount(vec3 _destination, vec3 _position, float _speed) {
 
 		vec3 dir = _destination - _position; //postion -> destination	
 		dir = normalize(dir);
-		cout << "dir: " << to_string(dir) << endl;
 		_position += (dir * _speed);
 		cout <<"Position: " << glm::to_string(_position) << endl;
 		cout << "Destination: " << glm::to_string(_destination) << endl;
-
-		cout << "Position mag: " << glm::length(_position) << endl;
-		cout << "Destination mag: " << glm::length(_destination) << endl;
 		
 		//if the distance between _position and _destination is <= distance of the next step, then we will overshoot our destination
 		if ((glm::distance(_position, _destination)) <= 
@@ -79,14 +75,43 @@ static int stepCount(vec3 _destination, vec3 _position, float _speed) {
 	return steps;
 }
 
+//Task 2
+static float trianglePerimeter(vec3 _a, vec3 _b, vec3 _c) {
+
+	float perimeter = distance(_a, _b) + distance(_a, _c) + distance(_b, _c);
+
+	return perimeter;
+}
+
+static float triangleArea(vec3 _a, vec3 _b, vec3 _c) {
+
+	vec3 aVec = _b - _a;
+	vec3 bVec = _c - _a;
+	vec3 cross = glm::cross(aVec, bVec);
+	//cross = glm::normalize(cross);
+
+	float area = glm::length(cross) / 2;
+
+	return area;
+}
+
+
 
 int main(void)
 {
+	/*
 	//stepCount(vec3 _destination, vec3 _position, float _speed)
-	int steps = stepCount({ 1,0,0 }, { 2, 2, 2 }, 1.0f);
+	int steps = stepCount({ 1,0,0 }, { 2, 2, 2 }, 0.1f);
 
 	cout<< "Steps:" << steps << endl;
+*/
 
+	vec3 a = { -3,1,2 };
+	vec3 b = { 0,4,1 };
+	vec3 c = { 1,-2,5 };
+
+	cout << "Triangle Perimeter: " << trianglePerimeter(a, b, c)<<endl;
+	cout << "Triangle Area: " << triangleArea(a, b, c) << endl;
 
 	return 0;
 }
