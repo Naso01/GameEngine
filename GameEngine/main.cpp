@@ -2,6 +2,7 @@
 
 using namespace glm;
 
+//Vector Addition
 static void AddVectors() {
 
 	vec2 a = { 3, 5 };
@@ -16,10 +17,24 @@ static void AddVectors() {
 
 }
 
+//Vector Subtraction
+static void SubtractionVectors() {
+
+	vec2 a = { 3, 5 };
+	vec2 b = { 2, -1 };
+	vec2 c = b - a; // a to b
+	vec2 d = a - b; // b to a
+	cout << glm::to_string(c) << "	Magnitude: " << glm::length(c)<< endl;
+
+	cout << glm::to_string(d) << "	Magnitude: " << glm::length(d) << endl;
+
+}
+
+
 
 int main(void)
 {
-	AddVectors();
+	SubtractionVectors();
 
 	return 0;
 }
