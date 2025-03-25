@@ -99,12 +99,6 @@ static float triangleArea(vec3 _a, vec3 _b, vec3 _c) {
 
 int main(void)
 {
-	/*
-	//stepCount(vec3 _destination, vec3 _position, float _speed)
-	int steps = stepCount({ 1,0,0 }, { 2, 2, 2 }, 0.1f);
-
-	cout<< "Steps:" << steps << endl;
-*/
 
 	vec3 a = { -3,1,2 };
 	vec3 b = { 0,4,1 };
