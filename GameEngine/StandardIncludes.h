@@ -5,6 +5,9 @@
 #define NATIVE_XRES 2560
 #define NATIVE_YRES 1440
 
+#define GLM_ENABLE_EXPERIMENTAL
+
+
 //Include standard headers
 #include <string>
 #include <vector>
