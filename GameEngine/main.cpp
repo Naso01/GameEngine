@@ -42,16 +42,51 @@ static void MultiplyVectors() {
 
 static void Distance() {
 
-	vec3 p1 = { 1, 1, 0 };
+	vec3 p1 = { 2, 1, 0 };
 	vec3 p2 = { 2, 1, 2 };
 	float distance = glm::distance(p1, p2);
 	cout << "Distance = " << distance << endl;
 }
 
+//Task 1 
+static int stepCount(vec3 _destination, vec3 _position, float _speed) {
+
+	int steps = 0;
+
+	while (_position != _destination){
+
+		vec3 dir = _destination - _position; //postion -> destination	
+		dir = normalize(dir);
+		cout << "dir: " << to_string(dir) << endl;
+		_position += (dir * _speed);
+		cout <<"Position: " << glm::to_string(_position) << endl;
+		cout << "Destination: " << glm::to_string(_destination) << endl;
+
+		cout << "Position mag: " << glm::length(_position) << endl;
+		cout << "Destination mag: " << glm::length(_destination) << endl;
+		
+		//if the distance between _position and _destination is <= distance of the next step, then we will overshoot our destination
+		if ((glm::distance(_position, _destination)) <= 
+			(glm::distance(_position + (dir * _speed), _destination )) ) {
+
+			_position = _destination; 
+
+		}
+
+		steps++;
+
+	}
+	return steps;
+}
+
 
 int main(void)
 {
-	Distance();
+	//stepCount(vec3 _destination, vec3 _position, float _speed)
+	int steps = stepCount({ 1,0,0 }, { 2, 2, 2 }, 1.0f);
+
+	cout<< "Steps:" << steps << endl;
+
 
 	return 0;
 }
