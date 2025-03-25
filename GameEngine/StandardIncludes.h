@@ -39,6 +39,11 @@
 	#define GetCurrentDir getcwd
 #endif
 
+//Open GL/Helper headers
+#include <glm/glm.hpp> // Include GLM
+#include <glm/ext.hpp> // OpenGL Experimental to_string
+
+
 using namespace std;
 
 
