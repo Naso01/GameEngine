@@ -29,6 +29,7 @@ static void SubtractionVectors() {
 	cout << glm::to_string(d) << "	Magnitude: " << glm::length(d) << endl;
 
 }
+//Vector Multiplication
 static vec3 pos = { 2,2,2 };
 static void MultiplyVectors() {
 
@@ -39,11 +40,18 @@ static void MultiplyVectors() {
 	cout << glm::to_string(pos) << endl;
 }
 
+static void Distance() {
+
+	vec3 p1 = { 1, 1, 0 };
+	vec3 p2 = { 2, 1, 2 };
+	float distance = glm::distance(p1, p2);
+	cout << "Distance = " << distance << endl;
+}
+
 
 int main(void)
 {
-	for (int count = 0; count < 10; count++)
-		MultiplyVectors();
+	Distance();
 
 	return 0;
 }
