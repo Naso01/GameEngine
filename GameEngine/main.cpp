@@ -29,10 +29,9 @@ static void SubtractionVectors() {
 	cout << glm::to_string(d) << "	Magnitude: " << glm::length(d) << endl;
 
 }
-
+static vec3 pos = { 2,2,2 };
 static void MultiplyVectors() {
 
-	vec3 pos = { 0, 0, 0 };
 	vec3 dest = { 1, 0, 0 };
 	vec3 dir = dest - pos;
 	dir = normalize(dir);
@@ -43,7 +42,8 @@ static void MultiplyVectors() {
 
 int main(void)
 {
-	MultiplyVectors();
+	for (int count = 0; count < 10; count++)
+		MultiplyVectors();
 
 	return 0;
 }
