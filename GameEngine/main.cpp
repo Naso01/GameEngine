@@ -48,64 +48,25 @@ static void Distance() {
 	cout << "Distance = " << distance << endl;
 }
 
-//Task 1 
-static int stepCount(vec3 _destination, vec3 _position, float _speed) {
 
-	int steps = 0;
+static void DotProduct()
+{
+	vec3 source = { 0, 0, 0 };
+	vec3 a = { 0, 2, 0 };
+	vec3 b = { 1, 1, 0 };
 
-	while (_position != _destination){
+	vec3 aVec = a - source;
+	vec3 bVec = b - source;
 
-		vec3 dir = _destination - _position; //postion -> destination	
-		dir = normalize(dir);
-		_position += (dir * _speed);
-		cout <<"Position: " << glm::to_string(_position) << endl;
-		cout << "Destination: " << glm::to_string(_destination) << endl;
-		
-		//if the distance between _position and _destination is <= distance of the next step, then we will overshoot our destination
-		if ((glm::distance(_position, _destination)) <= 
-			(glm::distance(_position + (dir * _speed), _destination )) ) {
+	aVec = glm::normalize(aVec);
+	bVec = glm::normalize(bVec);
 
-			_position = _destination; 
-
-		}
-
-		steps++;
-
-	}
-	return steps;
+	float dot = glm::dot(aVec, bVec);
+	std::cout << "Dot = " << dot << std::endl;
 }
-
-//Task 2
-static float trianglePerimeter(vec3 _a, vec3 _b, vec3 _c) {
-
-	float perimeter = distance(_a, _b) + distance(_a, _c) + distance(_b, _c);
-
-	return perimeter;
-}
-
-static float triangleArea(vec3 _a, vec3 _b, vec3 _c) {
-
-	vec3 aVec = _b - _a;
-	vec3 bVec = _c - _a;
-	vec3 cross = glm::cross(aVec, bVec);
-	//cross = glm::normalize(cross);
-
-	float area = glm::length(cross) / 2;
-
-	return area;
-}
-
-
 
 int main(void)
 {
-
-	vec3 a = { -3,1,2 };
-	vec3 b = { 0,4,1 };
-	vec3 c = { 1,-2,5 };
-
-	cout << "Triangle Perimeter: " << trianglePerimeter(a, b, c)<<endl;
-	cout << "Triangle Area: " << triangleArea(a, b, c) << endl;
-
+	DotProduct();
 	return 0;
 }
