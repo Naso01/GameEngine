@@ -80,6 +80,10 @@ static void CrossProduct()
 	cout << "Cross = " << glm::to_string(cross) << endl;
 }
 
+static void findCuboid(vec3 _a, vec3 _b, vec3 _c) {
+
+}
+
 int main(void)
 {
 	CrossProduct();
