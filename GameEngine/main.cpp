@@ -4,11 +4,24 @@ using namespace glm;
 
 
 
-int main(void)
-{
-	mat3 matrix = glm::mat4(1.0f);
+int main() {
+    glm::mat4 matrix1 = {
+      {1, 1, 1, 1},
+      {2, 2, 2, 2},
+      {3, 3, 3, 3},
+      {4, 4, 4, 4}
+    };
 
-	cout << to_string(matrix) << endl;
-	
-	return 0;
+    glm::mat4 matrix2 = {
+      {5, 5, 5, 5},
+      {6, 6, 6, 6},
+      {7, 7, 7, 7},
+      {8, 8, 8, 8}
+    };
+
+    cout << "Matrix1: " << glm::to_string(matrix1) << endl;
+    cout << "Matrix2: " << glm::to_string(matrix2) << endl;
+    cout << "Add M1 to M2: " << glm::to_string(matrix1 + matrix2) << endl;
+
+    return 0;
 }
