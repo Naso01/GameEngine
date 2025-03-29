@@ -5,24 +5,15 @@ using namespace glm;
 
 
 int main() {
-    glm::mat4 matrix1 = {
-      {1, 1, 1, 1},
-      {2, 2, 2, 2},
-      {3, 3, 3, 3},
-      {4, 4, 4, 4}
-    };
+	mat4 matrix1 = mat4(1.0f);
+	vec3 pos1 = { 0, 0, 0 };
+	matrix1 = translate(matrix1, pos1);
+	cout << "Translation Matrix 1: " << to_string(matrix1) << endl;
 
-    glm::mat4 matrix2 = {
-      {5, 5, 5, 5},
-      {6, 6, 6, 6},
-      {7, 7, 7, 7},
-      {8, 8, 8, 8}
-    };
+	mat4 matrix2 = mat4(1.0f);
+	vec3 pos2 = { 1, 2, 3 };
+	matrix2 = translate(matrix2, pos2);
+	cout << "Translation Matrix 2: " << to_string(matrix2) << endl;
 
-    cout << "Matrix1: " << glm::to_string(matrix1) << endl;
-    cout << "Matrix2: " << glm::to_string(matrix2) << endl;
-    cout << "Add M1 to M2: " << glm::to_string(matrix1 * matrix2) << endl;
-    cout << "Add M1 to M2: " << glm::to_string(matrix2 * matrix1) << endl;
-
-    return 0;
+	return 0;
 }
