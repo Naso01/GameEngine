@@ -68,8 +68,8 @@ static void DotProduct()
 static vec3 CrossProduct(vec3 a, vec3 b, vec3 source)
 {
 
-	vec3 aVec = a - source;
-	vec3 bVec = b - source;
+	vec3 aVec = source-a;
+	vec3 bVec = source-b;
 	vec3 cross = glm::cross(aVec, bVec);
 	cross = glm::normalize(cross);
 
@@ -79,6 +79,8 @@ static vec3 CrossProduct(vec3 a, vec3 b, vec3 source)
 
 static void findCuboid(vec3 _a, vec3 _b, vec3 _c) {
 
+	int depth = 5;
+
 	//Getting vectors
 	vec3 ab = _b - _a; //a to b
 	vec3 ac = _c - _a; //a to c
@@ -86,33 +88,30 @@ static void findCuboid(vec3 _a, vec3 _b, vec3 _c) {
 	
 	//Getting point d
 	vec3 dvector = ab + ac; 
-	vec3 d = dvector + _a; //give us point d
-	cout << "Vector to point d: " << to_string(dvector) << endl;
-	cout<<"point d: " <<to_string(d)<< endl;
+	vec3 d = dvector + _a; //gives us point d
 
 	
-	vec3 across = CrossProduct(ab, ac, _a); // top left corner
-	cout << "across: " << to_string(across) << endl;
+	vec3 cross = CrossProduct(ab, ac, _a); // top left corner
+	cout << "Cross Product: " << to_string(cross) << endl;
 
-
-	vec3 ba = _a - _b;
-	vec3 bd = d - _b;
-	vec3 bcross = CrossProduct(ba, bd, _b); // bottom right corner
-	cout << "bcross: " << to_string(bcross) << endl;
-
-
-	vec3 ca = _a - _c;
-	vec3 cd = d - _c;
-	vec3 ccross = CrossProduct(ca, cd, _c); // bottom right corner
-	cout << "ccross: " << to_string(ccross) << endl;
+	cross = cross * depth;
 	
+	//other corners of the cube (points)
+	vec3 a2 = _a + cross;
+	vec3 b2 = _b + cross;
+	vec3 c2 = _c + cross;
+	vec3 d2 = d + cross;
 
-	vec3 dc = _c - d;
-	vec3 db = _b - d;
-	vec3 dcross = CrossProduct(db, dc, d); // bottom right corner
-	cout << "dcross: " << to_string(dcross) << endl;
+	cout << "3d Cuboid's points (Corners)" << endl;
+	cout << "a: " << to_string(_a) << endl;
+	cout << "b: " << to_string(_b) << endl;
+	cout << "c: " << to_string(_c) << endl;
+	cout << "d: " << to_string(d) << endl;
 
-	
+	cout << "a2: " << to_string(a2) << endl;
+	cout << "b2: " << to_string(b2) << endl;
+	cout << "c2: " << to_string(c2) << endl;
+	cout << "d2: " << to_string(d2) << endl;
 
 }
 
