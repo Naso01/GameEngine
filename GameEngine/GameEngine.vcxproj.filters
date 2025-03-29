@@ -129,6 +129,9 @@
     <ClCompile Include="WavDraw.cpp">
       <Filter>Source Files\Core\Audio</Filter>
     </ClCompile>
+    <ClCompile Include="Matrix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -217,6 +220,9 @@
     </ClInclude>
     <ClInclude Include="WavDraw.h">
       <Filter>Header Files\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Matrix.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
