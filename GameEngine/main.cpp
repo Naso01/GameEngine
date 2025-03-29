@@ -65,27 +65,64 @@ static void DotProduct()
 	cout << "Dot = " << dot << endl;
 }
 
-static void CrossProduct()
+static vec3 CrossProduct(vec3 a, vec3 b, vec3 source)
 {
-	vec3 source = { 0, 0, 0 };
-	vec3 a = { 0, 2, 0 };
-	vec3 b = { 1, 1, 0 };
 
 	vec3 aVec = a - source;
 	vec3 bVec = b - source;
-
 	vec3 cross = glm::cross(aVec, bVec);
 	cross = glm::normalize(cross);
 
-	cout << "Cross = " << glm::to_string(cross) << endl;
+	//cout << "Cross = " << glm::to_string(cross) << endl;
+	return cross;
 }
 
 static void findCuboid(vec3 _a, vec3 _b, vec3 _c) {
+
+	//Getting vectors
+	vec3 ab = _b - _a; //a to b
+	vec3 ac = _c - _a; //a to c
+	vec3 cb = _b - _c; //c to b
+	
+	//Getting point d
+	vec3 dvector = ab + ac; 
+	vec3 d = dvector + _a; //give us point d
+	cout << "Vector to point d: " << to_string(dvector) << endl;
+	cout<<"point d: " <<to_string(d)<< endl;
+
+	
+	vec3 across = CrossProduct(ab, ac, _a); // top left corner
+	cout << "across: " << to_string(across) << endl;
+
+
+	vec3 ba = _a - _b;
+	vec3 bd = d - _b;
+	vec3 bcross = CrossProduct(ba, bd, _b); // bottom right corner
+	cout << "bcross: " << to_string(bcross) << endl;
+
+
+	vec3 ca = _a - _c;
+	vec3 cd = d - _c;
+	vec3 ccross = CrossProduct(ca, cd, _c); // bottom right corner
+	cout << "ccross: " << to_string(ccross) << endl;
+	
+
+	vec3 dc = _c - d;
+	vec3 db = _b - d;
+	vec3 dcross = CrossProduct(db, dc, d); // bottom right corner
+	cout << "dcross: " << to_string(dcross) << endl;
+
+	
 
 }
 
 int main(void)
 {
-	CrossProduct();
+	vec3 a = { -3,1,2 };
+	vec3 b = { 0,4,1 };
+	vec3 c = { 1,-2,5 };
+
+	findCuboid(a, b, c);
+	
 	return 0;
 }
