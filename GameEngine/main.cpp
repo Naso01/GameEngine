@@ -21,7 +21,7 @@ int main() {
 
     cout << "Matrix1: " << glm::to_string(matrix1) << endl;
     cout << "Matrix2: " << glm::to_string(matrix2) << endl;
-    cout << "Add M1 to M2: " << glm::to_string(matrix1 + matrix2) << endl;
+    cout << "Add M1 to M2: " << glm::to_string(matrix1 - matrix2) << endl;
 
     return 0;
 }
