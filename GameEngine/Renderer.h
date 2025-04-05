@@ -41,7 +41,7 @@ public:
     //Renders at the size of the rectangle
     void RenderTexture(Texture* _texture, Rect _rect);
     //grabs a fraction of the texture to be rendered only
-    void RenderTexture(Texture* _texture, Rect _srcRect, Rect _destRect);
+    void RenderTexture(Texture* _texture, Rect _srcRect, Rect _destRect, int _alpha = 255);
     //Renders Texture with possible rotation angle
     void RenderTexture(SDL_Texture* _texture, Rect _srcRect, Rect _desRect, double _angle);
 

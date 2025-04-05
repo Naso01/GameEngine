@@ -6,6 +6,7 @@
 
 
 class Renderer;
+class SpriteSheet;
 class TTFont;
 
 class InputController;
@@ -40,7 +41,8 @@ private:
 	
 	Timing* m_timing;
 	PhysicsController* m_physics;
-
+	SpriteSheet* m_fire;
+	SpriteSheet* m_smoke;
 };
 
 #endif //GAMECONTROLLER_H
