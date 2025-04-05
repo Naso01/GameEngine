@@ -49,6 +49,12 @@
     <Filter Include="Header Files\Core\Audio">
       <UniqueIdentifier>{589220e3-bb7f-43cf-9d21-b45a02169dd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Physics">
+      <UniqueIdentifier>{ee6bdc46-2d24-4e86-97d9-0fbce16bc682}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Core\Physics">
+      <UniqueIdentifier>{8c912cd5-4bc5-4f37-b70a-3b1ffdf546cb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -128,6 +134,15 @@
     </ClCompile>
     <ClCompile Include="WavDraw.cpp">
       <Filter>Source Files\Core\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>Source Files\Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="PhysicsController.cpp">
+      <Filter>Source Files\Core\Physics</Filter>
+    </ClCompile>
+    <ClCompile Include="RigidBody.cpp">
+      <Filter>Source Files\Core\Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -217,6 +232,15 @@
     </ClInclude>
     <ClInclude Include="WavDraw.h">
       <Filter>Header Files\Core\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>Header Files\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="PhysicsController.h">
+      <Filter>Header Files\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="RigidBody.h">
+      <Filter>Header Files\Core\Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -10,10 +10,10 @@ class TTFont;
 
 class InputController;
 
-class AudioController;
-class SoundEffect;
-class Song;
-class WavDraw;
+class Timing;
+
+class PhysicsController;
+
 
 class GameController : public Singleton<GameController>
 {
@@ -33,15 +33,14 @@ private:
 	SDL_Event m_sdlEvent;
 	Renderer* m_renderer;
 	TTFont* m_fArial20;
+
 	bool m_quit;
 
 	InputController* m_input;
 	
-	AudioController* m_audio;
-	WavDraw* m_wavDraw;
-	vector<SoundEffect*> m_effects;
+	Timing* m_timing;
+	PhysicsController* m_physics;
 
-	float m_zoomY;
 };
 
 #endif //GAMECONTROLLER_H

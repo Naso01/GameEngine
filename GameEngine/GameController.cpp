@@ -6,12 +6,10 @@
 #include "InputController.h"
 #include "Keyboard.h"
 #include "Mouse.h"
-#include "Controller.h"
 
-#include "AudioController.h"
-#include "SoundEffect.h"
+#include "Timing.h"
 
-#include "WavDraw.h"
+#include "PhysicsController.h"
 
 GameController::GameController() {
 	
@@ -22,9 +20,8 @@ GameController::GameController() {
 	m_quit = false;
 	m_input = nullptr;
 	
-	m_audio = nullptr;
-	m_wavDraw = nullptr;
-	m_zoomY = 5;
+	m_timing = nullptr;
+	m_physics = nullptr;
 	
 }
 
@@ -44,16 +41,17 @@ void GameController::Initialize() {
 	m_fArial20->Initialize(20);
 
 	m_input = &InputController::Instance();
-	m_audio = &AudioController::Instance();
-	m_wavDraw = new WavDraw();
 
-	m_effects.push_back(m_audio->LoadEffect("../Assets/Audio/Effects/Whoosh.wav"));
+	m_timing = &Timing::Instance();
+	m_physics = &PhysicsController::Instance();
+	
 }
 
 void GameController::ShutDown() {
 
 	delete m_fArial20;
-	delete m_wavDraw;
+	
+	
 }
 
 void GameController::HandleInput(SDL_Event _event) {
@@ -64,37 +62,44 @@ void GameController::HandleInput(SDL_Event _event) {
 
 		m_quit = true;
 	}
-	else if (m_input->KB()->KeyUp(_event, SDLK_w)) {
+	else if (m_input->KB()->KeyDown(_event, SDLK_a)) {
 
-		m_zoomY += 0.5f;
-	}
-	else if (m_input->KB()->KeyUp(_event, SDLK_s)) {
-
-		m_zoomY -= 0.5f;
+		m_physics->AddParticle(glm::vec2{ 300 + rand() % 400, 200 }, 3 + rand() % 5);
 	}
 
 	m_input->MS()->ProcessButtons(_event);
 }
 
 
-void GameController::RunGame() {
-
+void GameController::RunGame()
+{
 	Initialize();
 
-	while (!m_quit) {
+	while (!m_quit)
+	{
+		m_timing->Tick();
 
 		m_renderer->SetDrawColor(Color(255, 255, 255, 255));
 		m_renderer->ClearScreen();
-		
-		//Checks for Events in one frame
-		while (SDL_PollEvent(&m_sdlEvent) != 0) {
-			
+
+		SDL_Event m_sdlEvent;
+		while (SDL_PollEvent(&m_sdlEvent) != 0)
+		{
 			HandleInput(m_sdlEvent);
 		}
 
-		m_wavDraw->DrawWave(m_effects[0]->GetData(), m_renderer, m_zoomY);
+		m_physics->Update(m_timing->GetDeltaTime());
+		for (Particle* p : m_physics->GetParticles())
+		{
+			m_renderer->SetDrawColor(Color(0, 0, 0, 255));
+			m_renderer->RenderPoint(Point{ p->GetPosition().x, p->GetPosition().y });
+		}
 
+		m_fArial20->Write(m_renderer->GetRenderer(), ("FPS: " + std::to_string(m_timing->GetFPS())).c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 10, 10 });
+		m_fArial20->Write(m_renderer->GetRenderer(), m_physics->ToString().c_str(), SDL_Color{ 0, 0, 255 }, SDL_Point{ 120, 10 });
 
 		SDL_RenderPresent(m_renderer->GetRenderer());
+
+		//m_timing->CapFPS();
 	}
 }
