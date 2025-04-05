@@ -41,8 +41,7 @@ private:
 	
 	Timing* m_timing;
 	PhysicsController* m_physics;
-	SpriteSheet* m_fire;
-	SpriteSheet* m_smoke;
+	SpriteSheet* m_circle;
 };
 
 #endif //GAMECONTROLLER_H
