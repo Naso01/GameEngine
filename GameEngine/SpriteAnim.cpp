@@ -32,8 +32,11 @@ void SpriteAnim::Update(float _deltaTime) {
 	m_clipCurrent += m_clipSpeed * _deltaTime;
 	if (m_clipCurrent > m_clipEnd) {
 
-		m_clipCurrent = m_clipStart;
+		Reset();
 	}
+}
+void SpriteAnim::Reset() {
+	m_clipCurrent = m_clipStart;
 }
 
 void SpriteAnim::Serialize(ostream& _stream) {

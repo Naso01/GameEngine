@@ -72,9 +72,6 @@
     <ClCompile Include="Level.cpp">
       <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
-    <ClCompile Include="SpriteAnim.cpp">
-      <Filter>Source Files\Core\Gameplay</Filter>
-    </ClCompile>
     <ClCompile Include="Unit.cpp">
       <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
@@ -86,9 +83,6 @@
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
       <Filter>Source Files\Core\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="SpriteSheet.cpp">
-      <Filter>Source Files\Core\Gameplay</Filter>
     </ClCompile>
     <ClCompile Include="TTFont.cpp">
       <Filter>Source Files\Core\Graphics</Filter>
@@ -144,6 +138,18 @@
     <ClCompile Include="RigidBody.cpp">
       <Filter>Source Files\Core\Physics</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteSheet.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteAnim.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="HeroineState.cpp">
+      <Filter>Source Files\Core\Gameplay</Filter>
+    </ClCompile>
+    <ClCompile Include="Heroine.cpp">
+      <Filter>Source Files\Core\Gameplay</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Renderer.h">
@@ -179,13 +185,7 @@
     <ClInclude Include="Serializable.h">
       <Filter>Header Files\Core\Framework</Filter>
     </ClInclude>
-    <ClInclude Include="SpriteAnim.h">
-      <Filter>Header Files\Core\Gameplay</Filter>
-    </ClInclude>
     <ClInclude Include="Unit.h">
-      <Filter>Header Files\Core\Gameplay</Filter>
-    </ClInclude>
-    <ClInclude Include="SpriteSheet.h">
       <Filter>Header Files\Core\Gameplay</Filter>
     </ClInclude>
     <ClInclude Include="TTFont.h">
@@ -241,6 +241,18 @@
     </ClInclude>
     <ClInclude Include="RigidBody.h">
       <Filter>Header Files\Core\Physics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteAnim.h">
+      <Filter>Header Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteSheet.h">
+      <Filter>Header Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="HeroineState.h">
+      <Filter>Header Files\Core\Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="Heroine.h">
+      <Filter>Header Files\Core\Gameplay</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
